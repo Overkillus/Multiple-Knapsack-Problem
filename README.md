@@ -6,14 +6,5 @@ The task is to place **products** into the **fixture**, maximizing product profi
 **N.B.** please do *not* use an off-the-shelf solver such as `ortools` or `pulp`.
 The solution does not have to be optimal, but should represent an appropriate time/profit trade-off.
 
-`planogram.py` contains a minimal implementation.
-
-To proceed:
-
-1.  clone this repository
-2.  **working on a new branch**, complete the implementation of `planogram.py:planogram()`.
-    You are free to use your choice of additional libraries;
-    make sure to update `pyproject.toml` / `requirements.txt` as necessary.
-3.  get the code back to us:
-    -   **private** repository on bitbucket (preferred) github, etc, or
-    -   zip/tar project files and email us
+**Solution:**
+Greedy Round Robin Algorithm implementation with two additional steps of optimisation (item exchanges and rearranging).
