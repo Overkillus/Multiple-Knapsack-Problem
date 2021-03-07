@@ -7,4 +7,5 @@ The task is to place **products** into the **fixture**, maximizing product profi
 The solution does not have to be optimal, but should represent an appropriate time/profit trade-off.
 
 **Solution:**
+
 Greedy Round Robin Algorithm implementation with two additional steps of optimisation (item exchanges and rearranging).
