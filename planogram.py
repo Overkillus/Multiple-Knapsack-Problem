@@ -128,7 +128,7 @@ def planogram(fixture, products):
             # Add record to current distribution plan
             distribution = distribution.append(assignment, ignore_index=True)
 
-    # Display 
+    # Display
     # print("------------------------------")
     # print(fixture)
     # print(products)
