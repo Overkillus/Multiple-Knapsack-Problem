@@ -4,6 +4,9 @@ import pandas as pd
 
 def planogram(fixture, products):
     """
+    Description:
+    Greedy Round Robin Algorithm implementation with two additional steps of optimisation.
+
     Arguments:
     - fixture :: DataFrame[["shelf_no", "shelf_width_cm"]]
     - products :: DataFrame[["product_id", "product_width_mm", "profit"]]
@@ -21,7 +24,7 @@ def planogram(fixture, products):
     products = products.reset_index(drop=True)
     products['shelf_no'] = 0 # 0 -> unassigned item
 
-    # Knapsack greedy round robin algorithm
+    # Knapsack greedy round robin algorithm (O(N))
     remaining_capacity = [10 * width for width in fixture['shelf_width_cm']]  # cm -> mm
     current_shelf = 0  # Round robin token indicator
     # Every product
@@ -40,7 +43,7 @@ def planogram(fixture, products):
                 current_shelf = (shelf_index + 1) % len(fixture)  # Update RR token
                 break  # Cannot be added to other shelves
 
-    # Exchange optimisation algorithm
+    # Exchange optimisation algorithm (O(N^3))
     # Swaps products between shelves if it allows for a new item to be inserted
     for product_index_A in products.index:
         product_width_A = products.at[product_index_A, 'product_width_mm']
@@ -89,7 +92,7 @@ def planogram(fixture, products):
                             remaining_capacity[shelf_no_smaller-1] -= dif
                             remaining_capacity[shelf_no_bigger-1] += dif - products.at[candidate_index, 'product_width_mm']
 
-    # Exchange optimisation algorithm
+    # Exchange optimisation algorithm (O(N^2))
     # Attempts to exclude one item from each knapsack and tries to replace it with one or more unpicked items
     for product_index_A in reversed(products.index): # starting with worst quality items
         product_width_A = products.at[product_index_A, 'product_width_mm']
